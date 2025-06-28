@@ -1,6 +1,4 @@
-
-<!DOCTYPE html>
-<html lang="pt-br">
+<!DOCTYPE html><html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,96 +10,128 @@
       --accent-color: #3498db;
       --text-color: #2d3436;
       --button-hover: #2980b9;
-    }
+    }* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+body {
+  font-family: 'Helvetica Neue', sans-serif;
+  background: linear-gradient(135deg, var(--secondary-color), #ffffff);
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  padding: 20px;
+  text-align: center;
+}
 
-    body {
-      font-family: 'Helvetica Neue', sans-serif;
-      background: linear-gradient(135deg, var(--secondary-color), #ffffff);
-      color: var(--text-color);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      flex-direction: column;
-      padding: 20px;
-      text-align: center;
-    }
+h1 {
+  font-size: 3rem;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
 
-    h1 {
-      font-size: 3rem;
-      color: var(--primary-color);
-      margin-bottom: 20px;
-    }
+p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  color: var(--primary-color);
+  line-height: 1.6;
+}
 
-    p {
-      font-size: 1.2rem;
-      max-width: 700px;
-      color: var(--primary-color);
-      line-height: 1.6;
-    }
+.heart {
+  font-size: 4rem;
+  animation: pulse 1.5s infinite;
+  color: var(--accent-color);
+  margin: 30px 0;
+}
 
-    .heart {
-      font-size: 4rem;
-      animation: pulse 1.5s infinite;
-      color: var(--accent-color);
-      margin: 30px 0;
-    }
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.8; }
+}
 
-    @keyframes pulse {
-      0% { transform: scale(1); opacity: 0.8; }
-      50% { transform: scale(1.15); opacity: 1; }
-      100% { transform: scale(1); opacity: 0.8; }
-    }
+button {
+  margin-top: 20px;
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
 
-    button {
-      margin-top: 30px;
-      background-color: var(--accent-color);
-      color: white;
-      border: none;
-      padding: 14px 28px;
-      border-radius: 8px;
-      font-size: 1rem;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s, transform 0.2s;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
+button:hover {
+  background-color: var(--button-hover);
+  transform: scale(1.05);
+}
 
-    button:hover {
-      background-color: var(--button-hover);
-      transform: scale(1.05);
-    }
+#extra-message {
+  display: none;
+  margin-top: 25px;
+  font-size: 1.2rem;
+  color: var(--primary-color);
+}
 
-    #extra-message {
-      display: none;
-      margin-top: 25px;
-      font-size: 1.2rem;
-      color: var(--primary-color);
-    }
+#main-content {
+  display: none;
+}
+
+#password-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input[type="password"] {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  width: 250px;
+}
+
   </style>
 </head>
 <body>
-  <div class="heart">❤️</div>
-  <h1>Você é tudo pra mim</h1>
-  <p>
-    Essa é só uma forma diferente de te dizer que eu te amo, que sou grato por tudo o que vivemos juntos,
-    e que você transforma a minha vida todos os dias com o seu amor, paciência e companhia.
-  </p>
-  <button onclick="mostrarMensagem()">Clique aqui, meu amor 💌</button>
-  <div id="extra-message">
-    Você é minha melhor escolha. Eu faria tudo de novo, do mesmo jeitinho. Te amo! 💖
-  </div>
+  <div id="password-container">
+    <h1>Digite a senha 💌</h1>
+    <input type="password" id="senha" placeholder="Digite a senha...">
+    <button onclick="verificarSenha()">Entrar</button>
+  </div>  <div id="main-content">
+    <div class="heart">❤️</div>
+    <h1>Você é tudo pra mim</h1>
+    <p>
+      Essa é só uma forma diferente de te dizer que eu te amo, que sou grato por tudo o que vivemos juntos,
+      e que você transforma a minha vida todos os dias com o seu amor, paciência e companhia.
+    </p>
+    <button onclick="mostrarMensagem()">Clique aqui, meu amor 💌</button>
+    <div id="extra-message">
+      Você é minha melhor escolha. Eu faria tudo de novo, do mesmo jeitinho. Te amo! 💖
+    </div>
+  </div>  <script>
+    function verificarSenha() {
+      const senhaCorreta = "peru";
+      const input = document.getElementById("senha").value;
+      if (input === senhaCorreta) {
+        document.getElementById("password-container").style.display = "none";
+        document.getElementById("main-content").style.display = "flex";
+      } else {
+        alert("Senha incorreta! Tente novamente, meu amor. ❤️");
+      }
+    }
 
-  <script>
     function mostrarMensagem() {
       document.getElementById("extra-message").style.display = "block";
     }
-  </script>
-</body>
+  </script></body>
 </html>
